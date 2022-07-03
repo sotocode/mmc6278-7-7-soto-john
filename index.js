@@ -46,7 +46,8 @@ var p = document.createElement('p');
 var timeEl = document.createElement('p');
 var time = 30;
 var scores = document.createElement('p');
-var previousScore = localStorage.getItem('previous-score');
+var previous = 'previous-score';
+var totalScore = localStorage.getItem('previous');
 
 //Start Quiz Game
 quizGame();
@@ -71,7 +72,7 @@ function loadQuiz(selection){
         clearInterval(interval);
         quizGame();
         score = Math.round((score / questionsArr.length) * 100);
-        localStorage.setItem('previous-score', score);
+        localStorage.setItem(previous, score);
         quiz.appendChild(scores);
         scores.textContent = 'Previous Score: ' + score + '%';
     } else {
@@ -133,7 +134,7 @@ function coutdown(time){
 }
 
 //Score
-if (scores){
-    scores.textContent = 'Previous Score: ' + previousScore + '%';
+if (totalScore){
+    scores.textContent = 'Previous Score: ' + totalScore + '%';
     quiz.appendChild(scores);
 };
